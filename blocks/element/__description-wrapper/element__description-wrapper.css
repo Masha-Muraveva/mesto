@@ -1,0 +1,7 @@
+.element__description-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 25px 21px;
+  justify-content: space-between;
+  align-items: center;
+}
