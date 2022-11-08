@@ -11,14 +11,16 @@ popupClosedElement.addEventListener('click', () => {
 })
 
 const popupContentElement = popupElement.querySelector('.popup__content');
-let nameInput = popupContentElement.querySelector('.popup__user-name');
-let descriptionInput = popupContentElement.querySelector('.popup__user-description');
+const nameInput = popupContentElement.querySelector('.popup__user-name');
+const descriptionInput = popupContentElement.querySelector('.popup__user-description');
 const submitButton = popupContentElement.querySelector('.popup__save-button');
+const userName = document.querySelector('.profile__user-name');
+const userDescription = document.querySelector('.profile__user-description');
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
-  document.querySelector('.profile__user-name').textContent = nameInput.value;
-  document.querySelector('.profile__user-description').textContent = descriptionInput.value;
+  userName.textContent = nameInput.value;
+  userDescription.textContent = descriptionInput.value;
   popupElement.classList.remove('popup_opened');
 }
 
