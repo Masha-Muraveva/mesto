@@ -2,18 +2,18 @@
   min-width: 282px;
   min-height: 322px;
   background-color: #fff;
-  position: absolute;
-  top: 123px;
+  margin-top: 123px;
   box-sizing: border-box;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
   
 @media screen and (min-width: 768px){
   .popup__content {
     min-width: 430px;
     min-height: 330px;
-    top: 195px;
+    margin-top: 195px;
   }
 }
