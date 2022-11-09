@@ -8,6 +8,8 @@
   right: 0;
   background-repeat: no-repeat;
   background-size: 20px 20px;
+  opacity: 1;
+  transition: opacity 0.2s linear;
   cursor: pointer;
 }
   
@@ -19,4 +21,8 @@
     top: -40px;
     right: -40px;
   }
+}
+
+.popup__closed-button:hover {
+  opacity: 0.6;
 }

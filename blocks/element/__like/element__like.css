@@ -8,4 +8,11 @@
   background-color: #fff;
   width: 22px;
   height: 19px;
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.element__like {
+  opacity: 0.5;
 }

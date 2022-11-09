@@ -1,8 +1,7 @@
 .popup__content {
   min-width: 282px;
-  min-height: 322px;
   background-color: #fff;
-  margin-top: 123px;
+  margin: auto;
   box-sizing: border-box;
   border-radius: 10px;
   display: flex;
@@ -13,7 +12,5 @@
 @media screen and (min-width: 768px){
   .popup__content {
     min-width: 430px;
-    min-height: 330px;
-    margin-top: 195px;
   }
 }

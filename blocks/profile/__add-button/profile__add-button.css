@@ -10,6 +10,8 @@
   background-color: #000;
   background-position: center;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s linear;
 }
   
 @media screen and (min-width: 619px){
@@ -17,4 +19,8 @@
     width: 150px;
     margin-right: 0;
   }
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
