@@ -1,9 +1,9 @@
-.popup__form-data_name {
+.popup__form-data_type_name {
   margin-bottom: 30px;
 }
   
 @media screen and (min-width: 768px){
-  .popup__form-data_name {
+  .popup__form-data_type_name {
     padding-bottom: 7px;
   }
 }
