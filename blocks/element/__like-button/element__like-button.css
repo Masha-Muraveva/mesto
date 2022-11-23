@@ -1,4 +1,4 @@
-.element__like {
+.element__like-button {
   all: unset;
   background-image: url(../../../images/like-inactive.png);
   background-size: 100% 100%;
@@ -13,6 +13,6 @@
   transition: opacity 0.2s linear;
 }
 
-.element__like:hover {
+.element__like-button {
   opacity: 0.5;
 }

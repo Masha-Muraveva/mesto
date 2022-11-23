@@ -1,4 +1,4 @@
-.element__like_active {
+.element__like-button_active {
   all: unset;
   background-image: url(../../../../images/like-active.png);
   background-size: 100% 100%;
