@@ -37,11 +37,11 @@
         <p class="footer__copyright">&copy; 2022. Mesto Russia</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup popup_type_edit-profile">
         <div class="popup__content">
-          <button class="popup__closed-button" type="button" aria-label="Кнопка закрытия модального окна"></button>
+          <button class="popup__closed-button popup__closed-button_type_profile" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" method="post" name="profileForm">
+          <form class="popup__form popup__form_type_edit-profile" method="post" name="profileForm">
             <input type="text" name="name" class="popup__form-data popup__form-data_type_name" placeholder="Имя/Никнейм">
             <input type="text" name="description" class="popup__form-data popup__form-data_type_description" placeholder="Описание">
             <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения измененных данных пользователя">Сохранить</button>
@@ -51,11 +51,11 @@
 
       <div class="popup popup_type_add-card">
         <div class="popup__content">
-          <button class="popup__closed-button" type="button" aria-label="Кнопка закрытия модального окна"></button>
+          <button class="popup__closed-button popup__closed-button_type_add-card" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form popup__form_type_add-card" method="post" name="addCardForm">
-            <input type="text" name="cardTitle" class="popup__form-data popup__form-data_type_card-title" placeholder="Название">
-            <input type="text" name="cardLink" class="popup__form-data popup__form-data_type_card-link" placeholder="Ссылка на картинку">
+            <input type="text" name="cardTitle" class="popup__form-data popup__form-data_type_card-title" placeholder="Название" required>
+            <input type="url" name="cardLink" class="popup__form-data popup__form-data_type_card-link" placeholder="Ссылка на картинку" required>
             <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения данных для создания карточки">Сохранить</button>
           </form>
         </div>
@@ -63,7 +63,7 @@
 
       <div class="popup popup_type_fullscreen-photo">
         <figure class="popup__photo-content">
-          <button class="popup__closed-button" type="button" aria-label="Кнопка закрытия модального окна"></button>
+          <button class="popup__closed-button popup__closed-button_type_fullscreen" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <img class="popup__photo" src="#" alt="Увеличенное изображение места">
           <figcaption class="popup__photo-title"></figcaption>
         </figure>
@@ -82,6 +82,7 @@
       </li>
       </template>
 
+  <script src="./scripts/cards.js" defer></script>
   <script src="./scripts/index.js" defer></script>
   </body>
 </html>
