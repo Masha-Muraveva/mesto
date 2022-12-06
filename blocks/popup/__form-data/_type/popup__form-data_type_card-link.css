@@ -1,9 +1,3 @@
-.popup__form-data_type_card-link {
-    margin-bottom: 45px;
-}
-    
-@media screen and (min-width: 768px){
-  .popup__form-data_type_card-link {
-    margin-bottom: 48px;
-  }
-}
+/*.popup__form-data_type_card-link:invalid {
+  border-bottom: 1px solid #ff0000;
+}*/

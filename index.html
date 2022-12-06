@@ -41,9 +41,11 @@
         <div class="popup__content">
           <button class="popup__closed-button popup__closed-button_type_profile" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form popup__form_type_edit-profile" method="post" name="profileForm">
-            <input type="text" name="name" class="popup__form-data popup__form-data_type_name" placeholder="Имя/Никнейм">
-            <input type="text" name="description" class="popup__form-data popup__form-data_type_description" placeholder="Описание">
+          <form class="popup__form popup__form_type_edit-profile" method="post" name="profileForm" novalidate>
+            <input id="name-input" type="text" name="name" class="popup__form-data popup__form-data_type_name" placeholder="Имя/Никнейм" minlength="2" maxlength="40" autocomplete="off" required>
+            <span class="name-input-error popup__form-data-error"></span>
+            <input id="description-input" type="text" name="description" class="popup__form-data popup__form-data_type_description" placeholder="Описание" minlength="2" maxlength="200" autocomplete="off" required>
+            <span class="description-input-error popup__form-data-error"></span>
             <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения измененных данных пользователя">Сохранить</button>
           </form>
         </div>
@@ -53,9 +55,11 @@
         <div class="popup__content">
           <button class="popup__closed-button popup__closed-button_type_add-card" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form popup__form_type_add-card" method="post" name="addCardForm">
-            <input type="text" name="cardTitle" class="popup__form-data popup__form-data_type_card-title" placeholder="Название" required>
-            <input type="url" name="cardLink" class="popup__form-data popup__form-data_type_card-link" placeholder="Ссылка на картинку" required>
+          <form class="popup__form popup__form_type_add-card" method="post" name="addCardForm" novalidate>
+            <input id="title-input" type="text" name="cardTitle" class="popup__form-data popup__form-data_type_card-title" placeholder="Название" minlength="2" maxlength="30" autocomplete="off" required>
+            <span class="title-input-error popup__form-data-error"></span>
+            <input id="link-input" type="url" name="cardLink" class="popup__form-data popup__form-data_type_card-link" placeholder="Ссылка на картинку" autocomplete="off" required>
+            <span class="link-input-error popup__form-data-error"></span>
             <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения данных для создания карточки">Сохранить</button>
           </form>
         </div>
@@ -84,6 +88,6 @@
 
   <script src="./scripts/cards.js" defer></script>
   <script src="./scripts/index.js" defer></script>
+  <script src="./scripts/validate.js" defer></script>
   </body>
 </html>
-  
