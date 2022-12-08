@@ -50,7 +50,6 @@ const generateCard = (element) => {
     photoElementPopup.alt = element.name;
   }
   
-
   photoElement.addEventListener('click', () => {
     transmitInformation ();
     openPopup(popupFullScreenPhoto);
@@ -79,19 +78,13 @@ function eraseInputData () {
 
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 };
 
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 };
-
-function closePopupByEsc (event) {
-  if (event.key === 'Escape') {
-    const popupActiveModal = document.querySelector('.popup_opened');
-    closePopup (popupActiveModal);
-  }
-};
-
 
 function editProfileSubmitHandler (event) {
   event.preventDefault();
@@ -108,11 +101,17 @@ function addCardSubmitHandler (event) {
   closePopup (popupAddCard);
 };
 
-function resetErrorMessages (formElement, element) {
-  const errorMessages = formElement.querySelectorAll('.popup__form-data-error');
-  errorMessages.forEach((errorMessage) => {
-    hideInputError(formElement, element);
-    });
+function closePopupByEsc (event) {
+  if (event.key === 'Escape') {
+    const popupActiveModal = document.querySelector('.popup_opened');
+    closePopup (popupActiveModal);
+  }
+};
+
+function closePopupByOverlay (event) {
+  if (event.target === event.currentTarget) {
+    closePopup (event.target);
+  }
 };
 
 function getInputElements (formElement) {
@@ -153,28 +152,9 @@ buttonCloseAddCardPopup.addEventListener('click', () => {
 
 buttonCloseFullScreenPopup.addEventListener('click', (event) => closePopup (popupFullScreenPhoto));
 
-
-popupEditProfile.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup (popupEditProfile);
-  }
-});
-
-popupAddCard.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup (popupAddCard);
-  }
-});
-
-popupFullScreenPhoto.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    closePopup (popupFullScreenPhoto);
-  }
-});
-
-document.addEventListener('keydown', (event) => {
-  closePopupByEsc(event);
-});
+popupEditProfile.addEventListener('click', closePopupByOverlay);
+popupAddCard.addEventListener('click', closePopupByOverlay);
+popupFullScreenPhoto.addEventListener('click', closePopupByOverlay);
 
 formProfilePopup.addEventListener('submit', editProfileSubmitHandler);
 formAddCardPopup.addEventListener('submit', addCardSubmitHandler);
