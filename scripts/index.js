@@ -1,4 +1,4 @@
-import { initialCards } from "./data.js";
+import { initialCards, validationSettings } from "./data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
@@ -24,16 +24,6 @@ const linkInput = formAddCardPopup.querySelector('.popup__form-data_type_card-li
 
 const buttonCloseFullScreenPopup = popupFullScreenPhoto.querySelector('.popup__closed-button_type_fullscreen');
 
-const validationSettings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__form-data',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
-  inputErrorClass: 'popup__form-data_type_error',
-  errorClass: 'popup__form-data-error_active',
-  errorMessageClass: '.popup__form-data-error'
-}
-
 const renderCard = (data) => {
   const card = new Card (data, '#card__template');
   const element = card.generateCard();
@@ -58,11 +48,6 @@ formAddCardPopup.addEventListener('submit', addCardSubmitHandler);
 function convertInputData () {
   nameInput.value = userName.textContent;
   descriptionInput.value = userDescription.textContent;
-};
-
-function eraseInputData () {
-  titleInput.value = '';
-  linkInput.value = '';
 };
 
 function openPopup (popup) {
@@ -95,17 +80,23 @@ function closePopupByOverlay (event) {
   }
 };
 
-function getInputElements (formElement) {
-  return Array.from(formElement.querySelectorAll('.popup__form-data'));
+
+function handleCardClick(name, link) {
+  const photoElementPopup = popupFullScreenPhoto.querySelector(".popup__photo");
+  const photoTitleElementPopup = popupFullScreenPhoto.querySelector(".popup__photo-title");  
+
+  photoElementPopup.src = link;
+  photoTitleElementPopup.textContent = name;
+  photoElementPopup.alt = name;
+  openPopup(popupFullScreenPhoto);
 };
 
-function getSaveButtonElement (formElement) {
-  return formElement.querySelector('.popup__save-button');
-};
+const validators = new Map();
 
 const formValidate = (settings, formElement ) => {
   const formValidator = new FormValidator (settings, formElement);
   formValidator.enableValidation();
+  validators.set(formElement.name, formValidator);
 }
 
 const popupForms = document.querySelectorAll('.popup__form');
@@ -114,15 +105,17 @@ popupForms.forEach((popupForm) => {
   formValidate(validationSettings, popupForm);
 });
 
+
+
 buttonOpenEditProfilePopup.addEventListener('click', () => {
   convertInputData ();
-  new FormValidator(validationSettings, formProfilePopup).resetErrorMessages();
+  validators.get(formProfilePopup.name).resetErrorMessages();
   openPopup (popupEditProfile);
 });
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
-  eraseInputData ();
-  new FormValidator(validationSettings, formAddCardPopup).resetErrorMessages();
+  formAddCardPopup.reset();
+  validators.get(formAddCardPopup.name).resetErrorMessages();
   openPopup (popupAddCard);
 });
 
@@ -142,4 +135,4 @@ popupFullScreenPhoto.addEventListener('click', closePopupByOverlay);
 
 formProfilePopup.addEventListener('submit', editProfileSubmitHandler);
 
-export {openPopup, popupFullScreenPhoto};
+export { handleCardClick };

@@ -28,7 +28,7 @@ export class FormValidator {
     elementError.textContent = '';
   };
   
-  _isValid = (input) => {
+  _toggleInputErrorState = (input) => {
     if (!input.validity.valid) {
       this._showInputError(input, input.validationMessage);
     } 
@@ -58,7 +58,7 @@ export class FormValidator {
 
   _setEventListeners = (input) => {
       input.addEventListener('input', () => {
-        this._isValid(input)
+        this._toggleInputErrorState(input)
         this._toggleButtonState();
       });
   };
