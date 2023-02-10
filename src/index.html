@@ -14,13 +14,14 @@
       <main class="content">
         <section class="profile">
           <div class="profile__user">
-            <img class="profile__user-photo" alt="Фото пользователя" src="<%=require('./images/Avatar.png')%>">
+            <img class="profile__user-photo" alt="Фото пользователя" src="#">
+            <button class="profile__user-photo-button"></button>
             <div class="profile__changeable-information">
               <div class="profile__user-wrapper">
-                <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+                <h1 class="profile__user-name"></h1>
                 <button class="profile__edit-button" type="button" aria-label="Кнопка редактирования данных пользователя"></button>
               </div>
-                <p class="profile__user-description">Исследователь океана</p>
+                <p class="profile__user-description"></p>
               </div>
           </div>
           <button class="profile__add-button" type="button" aria-label="Кнопка добавления фотографий">
@@ -40,11 +41,11 @@
         <div class="popup__content">
           <button class="popup__closed-button popup__closed-button_type_profile" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form popup__form_type_edit-profile" method="post" name="profileForm" novalidate>
+          <form class="popup__form popup__form_type_edit-profile" name="profileForm" novalidate>
             <input id="name-input" type="text" name="name" class="popup__form-data popup__form-data_type_name" placeholder="Имя/Никнейм" minlength="2" maxlength="40" autocomplete="off" required>
             <span class="name-input-error popup__form-data-error"></span>
-            <input id="description-input" type="text" name="description" class="popup__form-data popup__form-data_type_description" placeholder="Описание" minlength="2" maxlength="200" autocomplete="off" required>
-            <span class="description-input-error popup__form-data-error"></span>
+            <input id="about-input" type="text" name="about" class="popup__form-data popup__form-data_type_description" placeholder="Описание" minlength="2" maxlength="200" autocomplete="off" required>
+            <span class="about-input-error popup__form-data-error"></span>
             <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения измененных данных пользователя">Сохранить</button>
           </form>
         </div>
@@ -54,12 +55,12 @@
         <div class="popup__content">
           <button class="popup__closed-button popup__closed-button_type_add-card" type="button" aria-label="Кнопка закрытия модального окна"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form popup__form_type_add-card" method="post" name="addCardForm" novalidate>
-            <input id="title-input" type="text" name="cardTitle" class="popup__form-data popup__form-data_type_card-title" placeholder="Название" minlength="2" maxlength="30" autocomplete="off" required>
+          <form class="popup__form popup__form_type_add-card" name="addCardForm" novalidate>
+            <input id="title-input" type="text" name="title" class="popup__form-data popup__form-data_type_card-title" placeholder="Название" minlength="2" maxlength="30" autocomplete="off" required>
             <span class="title-input-error popup__form-data-error"></span>
-            <input id="link-input" type="url" name="cardLink" class="popup__form-data popup__form-data_type_card-link" placeholder="Ссылка на картинку" autocomplete="off" required>
+            <input id="link-input" type="url" name="link" class="popup__form-data popup__form-data_type_card-link" placeholder="Ссылка на картинку" autocomplete="off" required>
             <span class="link-input-error popup__form-data-error"></span>
-            <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения данных для создания карточки">Сохранить</button>
+            <button class="popup__save-button" type="submit" aria-label="Кнопка сохранения данных для создания карточки">Создать</button>
           </form>
         </div>
       </div>
@@ -71,6 +72,28 @@
           <figcaption class="popup__photo-title"></figcaption>
         </figure>
       </div>
+
+      <div class="popup popup_type_edit-avatar">
+        <div class="popup__content popup__content_type_edit-avatar">
+          <button class="popup__closed-button popup__closed-button_type_edit-avatar" type="button" aria-label="Кнопка закрытия модального окна"></button>
+          <h2 class="popup__title popup__title_type_edit-avatar">Обновить аватар</h2>
+          <form class="popup__form popup__form_type_edit-avatar" name="avatarForm" novalidate>
+            <input id="avatar-input" type="url" name="avatarLink" class="popup__form-data popup__form-data_type_avatar-link" placeholder="Ссылка на аватар" autocomplete="off" required>
+            <span class="avatar-input-error popup__form-data-error"></span>
+            <button class="popup__save-button popup__save-button_type_edit-avatar" type="submit" aria-label="Кнопка сохранения данных для изменения аватара">Сохранить</button>
+          </form>
+        </div>
+      </div>
+    
+      <div class="popup popup_type_delete-card">
+        <div class="popup__content popup__content_type_delete-card">
+          <button class="popup__closed-button popup__closed-button_type_delete-card" type="button" aria-label="Кнопка закрытия модального окна"></button>
+          <h2 class="popup__title popup__title_type_delete-card">Вы уверены?</h2>
+          <form class="popup__form popup__form_type_delete-card" name="deleteCardForm" novalidate>
+            <button class="popup__save-button popup__save-button_type_delete-card" type="submit" aria-label="Кнопка подтверждения для удаления карточки">Да</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <template class="card__template" id="card__template">
@@ -79,8 +102,10 @@
         <img class="element__photo" src="#" alt="Фотография места">
         <div class="element__description-wrapper">
           <h2 class="element__title"></h2>
-          <button class="element__like-button" id="like" type="button" aria-label="Кнопка Ставлю лайк!">
-          </button>
+          <div class="element__like-wrapper">
+            <button class="element__like-button" id="like" type="button" aria-label="Кнопка Ставлю лайк!"></button>
+            <p class="element__like-counter"></p>
+          </div>
         </div>
       </li>
     </template>

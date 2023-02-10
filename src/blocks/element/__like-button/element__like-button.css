@@ -2,7 +2,7 @@
   all: unset;
   background-image: url(../../../images/like-inactive.png);
   background-size: 100% 100%;
-  margin: 0;
+  margin: 0 0 3px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fff;

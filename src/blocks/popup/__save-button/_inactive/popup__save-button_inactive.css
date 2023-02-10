@@ -9,7 +9,6 @@
   opacity: 0.2;
   width: 238px;
   height: 46px;
-  margin: 15px auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +23,5 @@
     height: 50px;
     font-size: 18px;
     line-height: 22px;
-    margin-top: 18px;
   }
 }
