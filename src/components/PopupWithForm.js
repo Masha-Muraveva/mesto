@@ -8,11 +8,10 @@ export class PopupWithForm extends Popup {
     this._popupForm = this._popup.querySelector('.popup__form');
     this._buttonConfirmation = this._popupForm.querySelector('.popup__save-button');
     this._buttonConfirmationText = this._buttonConfirmation.textContent;
-  
+    this._inputList = this._popupForm.querySelectorAll('.popup__form-data');
   }
 
   _getInputValues() {
-    this._inputList = this._popupForm.querySelectorAll('.popup__form-data');
     this._formValues = {};
     this._inputList.forEach(input => {
       this._formValues[input.name] = input.value;

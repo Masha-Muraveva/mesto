@@ -197,7 +197,8 @@ const cardsList = new Section(
       cardsList.addItem(cardElement);
     }
   },
-cardList);
+  cardList
+);
 
 
 //Создание экземпляра класса для работы попапа 

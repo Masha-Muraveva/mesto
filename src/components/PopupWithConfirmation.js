@@ -23,7 +23,7 @@ export class PopupWithConfirmation extends Popup {
 
   initializeLoading(isLoading) {
     if (isLoading) {
-      this._buttonConfirmation.textContent = 'Сохранение...';
+      this._buttonConfirmation.textContent = 'Удаление...';
     } else {
       this._buttonConfirmation.textContent = this._buttonConfirmationText;
     }
